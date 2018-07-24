@@ -1,24 +1,4 @@
-//Please develop a web based calculator following the backlog below. Do not spend more than 3h on this challenge. This won’t be enough time to solve the task so decide on your own how to compromise quality vs. quantity. Please use git for this task so progress can be followed easily and add a README.md so new developers know where to start. All other tools and frameworks are up to you.
-//
-//- As a user I need a statistical calculator
-//
-//- As a user I would like to enter an arbitrary large series of real numbers on a keypad
-//
-//- As a user I would like to add this number to a list of numbers
-//
-//- As a user I would like to clear the complete list
-//
-//- As a user I would like to clear the number which is currently in the display
-//
-//- As a user I would like to compute the sum of the list of numbers
-//
-//- As a user I would like to compute the mean value of the list of numbers
-//
-//- As a user I would like to compute the mean value of the numbers squared in the list
-//
-//- As a user I would like to negate individual numbers in the list
-//
-//- As a user I would like to compute the variance of the numbers in the list
+
 let number =[];
 let list =[];
 let current ="";
@@ -38,23 +18,37 @@ $("#send").click(function(){
     // clear the number used so far, so it won't reappear by clicking the digit buttons
     number =[];
     // use the value of the input to have the current number
-    current = $("#num_input").val();
-    $("#current").html("Current number: " + current);
-    // put the current number in a list and the array
-    list.push(current);
-    
-    let item = $("<li>");
-    let negate_btn = $("<button>").attr("class", "no_btn").html("Don't count")
-    $(item).attr("class", "list_item").html(current);
-    $(item).append(negate_btn);
-    $("#num_list").append(item); 
+    current = parseInt($("#num_input").val());
+    console.log(current);
+    console.log(Number.isNaN(current))
+    //check if the input is a number; if not, alert message
+    if (! Number.isNaN(current)){
+        console.log(!Number.isNaN(current))
+        $("#current").html("Current number: " + current);
+        // put the current number in a list and in the array
+        list.push(current);
+        console.log(list);
+        let item = $("<li>");
+        $(item).attr("class", "list_item").html(current);
+        $(item).click(function(){
+            let that = $(this);
+            ignore(that);
+        })
+        $("#num_list").append(item); 
+    }
+    if (Number.isNaN(current)){
+        alert("Please insert a number")
+    }
     //clear the current input value
     $("#num_input").val(" ")
-
 })
 
-//clear the complete list
+$(".list_item").click(function(){
+    console.log("CLICKED");
+})
 
+
+//clear the whole list
 $("#clear_all").click(function(){
     $(".list_item").each(function(){
         list = [];
@@ -62,6 +56,7 @@ $("#clear_all").click(function(){
         $("#sum").html("Sum: ");
         $("#mean").html("Mean: ");
         $("#sqr_mean").html("Square Mean: ");
+        $("variance").html("Variance: ");
         $(this).remove();
     })
 })
@@ -86,13 +81,10 @@ $("#get_sqr_mean").click(function(){
    sqr_mean(list, that);                      
 });
 
-$(".no_btn").click(function(){
-    console.log("LOL");
-    let that = $(this);
-    console.log(that);
-    ignore(that);
+$("#get_variance").click(function(){
+    let that = $(this)
+    variance(list, that);
 })
-
 
 
 //compute the sum of the numbers of the list
@@ -113,7 +105,6 @@ function sum(array, clicked){
 //compute the mean value of the numbers of the list
 function mean(array, clicked){
     let s = sum(array)
-    console.log(s);
     let length = array.length
     let mean = s/length;
     if ($(clicked).attr("id") == "get_mean"){
@@ -132,12 +123,39 @@ function sqr_mean(array, clicked){
     return sqr_mean
 }
 
-//ignore one particular element
+//ignore one or more numbers in the computation
 function ignore(clicked){
-    console.log("lol");
+    let color = $(clicked).css("color");
+    let chosen= $(clicked).html()
+    $(clicked).toggleClass("ignored")
+    //if the chosen element has the class "ignored", delete it from the array "list";
+    //otherwise put it in the array "list"
+    if ($(clicked).hasClass("ignored")){
+        list.splice(list.indexOf(chosen), 1);
+    }
+    else{
+        list.push(chosen)
+    }
+    console.log(list);
+}
+
+//compute the variance:
+//find the mean of a group of numbers
+//subtract it to each number, then square the result
+//find the mean of the resulted squared numbers
+
+function variance(array, clicked){
     console.log(clicked);
-    console.log($(clicked).parent());
-//        .css("color", "red");
+    console.log(array);
+    let m = mean(array, clicked);
+    console.log(m);
+    let mid_array = array.map( n => Math.pow((n-m), 2));
+    let v = mean(mid_array, clicked);
+    console.log(v);
+    if ($(clicked).attr("id") == "get_variance"){
+        $("#variance").html("Variance: " + v);
+    }
+    return v;
 }
 
 //small utiilty function to parse the strings in the array "list" into integers
@@ -152,7 +170,6 @@ function square(array){
     let result = parsed_array.map(n => n*n);
     return result
 }
-
 
 
 
