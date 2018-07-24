@@ -19,7 +19,6 @@
 //- As a user I would like to negate individual numbers in the list
 //
 //- As a user I would like to compute the variance of the numbers in the list
-
 let number =[];
 let list =[];
 let current ="";
@@ -31,13 +30,27 @@ $(".digit").click(function(){
 })
 
 $("#cancel").click(function(){
-    $("#num_input").val("")
+    $("#num_input").val(" ");
+    number=[];
 })
 
 $("#send").click(function(){
+    // clear the number used so far, so it won't reappear by clicking the digit buttons
+    number =[];
+    // use the value of the input to have the current number
     current = $("#num_input").val();
-    console.log(current);
-    $("#current").html("Current number: " + current)
+    $("#current").html("Current number: " + current);
+    // put the current number in a list
+    list.push(current);
+    let item = $("<li>").html(current);
+    $("#num_list").append(item);
+    
+    
+    //clear the current input value
+    $("#num_input").val(" ")
+
 })
+
+
 
 
