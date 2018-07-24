@@ -9,15 +9,30 @@
 </head>
 <body>
     <div class="container" id="mainContainer">
-        <div class="col-md-6" id="workspace">
-            
-        </div>
-        <div class="col-md-6" id="numpad_space">
-            <div id="numpad">
-                <div id="1"></div>
-                <div id="2"></div>
+       <div class= "row">
+            <div class="col-md-6" id="workspace">
+                <div id="current">Current number: 0</div>
+                <ul id="list"> List of numbers</ul>
             </div>
-        </div>
+            <div class="col-md-6" id="numpad_space">
+               <input type="text" id="num_input">
+               <button id="send"> Send</button>
+               <div id="numpad">
+                    <div name="1" class="digit">1</div>
+                    <div name="2" class="digit">2</div>
+                    <div name="3" class="digit">3</div>
+                    <div name="4" class="digit">4</div>
+                    <div name="5" class="digit">5</div>
+                    <div name="6" class="digit">6</div>
+                    <div name="7" class="digit">7</div>
+                    <div name="8" class="digit">8</div>
+                    <div name="9" class="digit">9</div>
+                    <div name="0" class="digit" id="num_0">0</div>
+                    <div class="digit" id="cancel">C</div>
+               </div>
+            </div>
+       </div>
+
     </div>
     
     

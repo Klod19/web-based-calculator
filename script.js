@@ -20,3 +20,24 @@
 //
 //- As a user I would like to compute the variance of the numbers in the list
 
+let number =[];
+let list =[];
+let current ="";
+
+$(".digit").click(function(){
+    number.push($(this).attr("name"));
+    let string = number.join("");
+    $("#num_input").val(string);
+})
+
+$("#cancel").click(function(){
+    $("#num_input").val("")
+})
+
+$("#send").click(function(){
+    current = $("#num_input").val();
+    console.log(current);
+    $("#current").html("Current number: " + current)
+})
+
+

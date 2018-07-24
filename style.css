@@ -1,0 +1,41 @@
+#workspace{
+    padding-top:10px;
+    width:50%;
+}
+
+#numpad_space{
+    padding-top:10px;
+    width:50%;
+    background-color: aquamarine;
+}
+
+
+#numpad{
+    display: flex;
+    flex-flow:row wrap;
+    width:200px;
+}
+
+.digit{
+    width:50px;
+    height:50px;
+    margin:5px;
+    
+    background-color: darkblue;
+    color:white;
+    
+    text-align: center;
+    
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.digit:hover{
+    background-color: grey;
+}
+
+#num_0{
+    width:55% !important;
+}
