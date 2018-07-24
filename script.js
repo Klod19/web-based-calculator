@@ -40,17 +40,49 @@ $("#send").click(function(){
     // use the value of the input to have the current number
     current = $("#num_input").val();
     $("#current").html("Current number: " + current);
-    // put the current number in a list
+    // put the current number in a list and the array
     list.push(current);
-    let item = $("<li>").html(current);
-    $("#num_list").append(item);
+    let item = $("<li>");
+    $(item).attr("class", "list_item").html(current);
     
+    $("#num_list").append(item);
     
     //clear the current input value
     $("#num_input").val(" ")
 
 })
 
+//clear the complete list
+
+$("#clear_all").click(function(){
+    $(".list_item").each(function(){
+        list = [];
+        $("#current").html("Current number :")
+        $("#sum").html("Sum: ");
+        $(this).remove();
+    })
+})
+
+//clear the current number
+$("#clear_current").click(function(){
+    $("#current").html("Current number :")
+})
+
+//compute the sum of number
+$("#sum_it").click(function(){
+    let total = 0
+//    numbers = list.map(n => parseInt(n));
+    numbers = parse(list);
+    numbers.forEach(function(n){
+        total = total + n;
+    })
+    $("#sum").html("Sum: " + total);
+})
+
+function parse(array){
+    result = array.map(n => parseInt(n));
+    return result
+}
 
 
 
