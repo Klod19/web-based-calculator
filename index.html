@@ -2,17 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Testo challenge </title>
+    <title>Web Based Calculator </title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container" id="mainContainer">
+      <h1> Web Based Calculator</h1>
        <div class= "row">
             <div class="col-md-6" id="workspace">
                 <div id="current">Current number: </div>
-                <div>List of Numbers: </div>
+                <div>List of Numbers (click one to exclude it from the count): </div>
                 <ul id="num_list"></ul>
                 <div id="sum">Sum: </div>
                 <div id="mean">Mean: </div>
@@ -22,7 +23,7 @@
             <div class="col-md-6 row" id="numpad_space">
               <div class="col-md-8">
                    <input type="text" id="num_input">
-                   <button id="send"> Send</button>
+                   <button id="send" class="btn"> Send</button>
                    <div id="numpad">
                         <div name="1" class="digit">1</div>
                         <div name="2" class="digit">2</div>
@@ -38,12 +39,12 @@
                    </div>
               </div>
               <div class="cold-md-4 button_container">
-                  <button id="clear_all"> Clear all</button>
-                  <button id="clear_current">Clear current</button>
-                  <button id="sum_it">Sum</button>
-                  <button id="get_mean">Mean</button>    
-                  <button id="get_sqr_mean">Square Mean</button>
-                  <button id="get_variance">Variance</button>    
+                  <button id="sum_it" class="btn funct_btn" >Sum</button>
+                  <button id="get_mean" class="btn funct_btn">Mean</button>    
+                  <button id="get_sqr_mean" class="btn funct_btn">Square Mean</button>
+                  <button id="get_variance" class="btn funct_btn">Variance</button> 
+                  <button id="clear_current" class="btn funct_btn">Clear current</button>  
+                  <button id="clear_all" class="btn funct_btn"> Clear all</button> 
               </div>
 
             </div>

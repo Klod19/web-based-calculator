@@ -2,6 +2,11 @@
     margin-top: 10px;
 }
 
+h1{
+    text-align: center;
+    margin-bottom: 80px;
+}
+
 #workspace, #numpad_space{
     padding-top:10px;
     width:50%;
@@ -53,6 +58,16 @@
 button{
     margin-bottom:5px;
 }
+
+button:hover{
+    background-color: darkblue;
+    color:white
+}
+
+.funct_btn{
+    width:150px !important;
+}
+
 
 li{
     margin-top: 5px;

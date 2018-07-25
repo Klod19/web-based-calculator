@@ -14,6 +14,8 @@ Web Based Calculator
 
 -calculate the variance of the numbers in the list
 
--Enjoy!
+Made with jQuery, Bootstrap, HTML by Claudio Perizzolo (Klod19)
+
+Enjoy!
 
 
