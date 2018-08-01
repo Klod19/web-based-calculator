@@ -47,15 +47,16 @@ $("#send").click(function(){
 
 //clear the whole list
 $("#clear_all").click(function(){
-    $(".list_item").each(function(){
         list = [];
         $("#current").html("Current number :")
         $("#sum").html("Sum: ");
         $("#mean").html("Mean: ");
         $("#sqr_mean").html("Square Mean: ");
         $("#variance").html("Variance: ");
-        $(this).remove();
-    })
+        
+        $(".list_item").each(function(){
+            $(this).remove();
+        })
 })
 
 //clear the current number
