@@ -53,7 +53,7 @@ $("#clear_all").click(function(){
         $("#mean").html("Mean: ");
         $("#sqr_mean").html("Square Mean: ");
         $("#variance").html("Variance: ");
-        
+        //get rid of each element
         $(".list_item").each(function(){
             $(this).remove();
         })
